@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Account } from '../account/account';
 import { AccountService } from '../service/account-service';
 
@@ -11,15 +11,18 @@ export class AccountListComponent implements OnInit {
 
   accounts: Account[];
   accountsSublist: Account[] = [];
+  searchWord: string;
 
   constructor(private accountService: AccountService) {
   }
 
-  public getSubList(nameSubstring: string): void {
-    if (!nameSubstring) {
+  @Output() searchCriteria = new EventEmitter<string>();
+  getSubList(): void {
+    this.searchCriteria.emit(this.searchWord);
+    if (!this.searchWord) {
       this.accountsSublist = this.accounts;
     } else {
-      this.accountsSublist = this.accounts.filter((account) => account.name.includes(nameSubstring))
+      this.accountsSublist = this.accounts.filter((account) => account.name.includes(this.searchWord))
     }
   }
 
