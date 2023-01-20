@@ -17,13 +17,18 @@ export class AccountListComponent implements OnInit {
   }
 
   @Output() searchCriteria = new EventEmitter<string>();
-  getSubList(): void {
+  getSublist(): void {
     this.searchCriteria.emit(this.searchWord);
     if (!this.searchWord) {
       this.accountsSublist = this.accounts;
     } else {
       this.accountsSublist = this.accounts.filter((account) => account.name.includes(this.searchWord))
     }
+  }
+
+  resetSublist(): void {
+    this.searchWord = '';
+    this.accountsSublist = this.accounts;
   }
 
   ngOnInit() {

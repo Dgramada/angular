@@ -17,4 +17,8 @@ export class TransactionService {
   public findAll(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.transactionUrl + "transactionList");
   }
+
+  public save(transaction: Transaction) {
+    return this.http.post<Transaction>(this.transactionUrl + "createTransaction", transaction);
+  }
 }

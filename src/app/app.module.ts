@@ -9,7 +9,7 @@ import { AccountService } from './service/account-service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
-import { TransactionFormComponent } from './transaction-form/transaction-form/transaction-form.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 
 
 @NgModule({
